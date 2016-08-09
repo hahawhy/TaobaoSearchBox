@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Imitate TaoBao</title>
+  <script type="text/javascript">
+  window.onload=function(){
+    var as = document.getElementById("search-nav").getElementsByTagName("a");
+    var panels = document.getElementById("search-text-panel").getElementsByTagName("div");
+    var btns = document.getElementById("search-btn-panel").getElementsByTagName("div");
+    for(var i=0;i<3;i++){
+      as[i].id=i;
+      as[i].onclick = function(){
+        for(var j=0;j<3;j++){
+          as[j].className = "";
+          panels[j].style.display="none";
+          btns[j].style.display="none";
+        }
+        as[1].style.background="#fff";
+        //这里算是一种hack把天猫的颜色同步了，不过代码不够严谨，有点投机呐
+        if(this.id==0 || this.id==2){
+          this.className = "goods";
+        }else{
+          this.className = "goods";
+          this.style.background="#c60000";
+        }
+
+        panels[this.id].style.display="block";
+        btns[this.id].style.display="block";
+      }
+    }
+  }
+  </script>
+  <style type="text/css">
+  *{
+    margin:0;
+    padding:0;
+    font-size:12px;
+  }
+  a{
+    text-decoration:none;
+    color:#000;
+  }
+  input{
+    outline:none;
+    border:none;
+  }
+  .clear{
+    clear:both;
+  }
+  .search{
+    width:760px;
+    height:100px;
+    margin:30px auto;
+  }
+  .search-main{
+    width:760px;
+    height:65px;
+  }
+  .search-nav a{
+    display:inline-block;
+    width:50px;
+    height:25px;
+    text-align:center;
+    line-height:25px;
+  }
+  .search-nav a:hover{
+    background-color:#f9e6e6;
+  }
+  .search-nav .goods{
+    background-color:#ff5400;
+    color:#fff;
+    font-weight:bold;
+  }
+  .search-nav .goods:hover{
+    background-color:#ff5400;
+  }
+  .search-nav .tmall, .search-nav .shop{
+    margin-left:-6px;
+  }
+  .search-box{
+    width:714px;
+    height:34px;
+    float:left;
+  }
+  .search-box form{
+    position:relative;
+    width:714px;
+    height:34px;
+  }
+  .search-text{
+    border:3px solid #ff5400;
+    height:34px;
+    width:608px;
+  }
+  .search-text input{
+    padding:8px 8px 8px 22px;
+    overflow:hidden;
+    width:578px;
+  }
+  .search-text i{
+
+  }
+  .search-tmall-text{
+    border:3px solid #c60000;
+  }
+  .search-btn{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:100px;
+    height:40px;
+    background-color:blue;
+  }
+  .search-btn input{
+    background-color:#ff5400;
+    width:100px;
+    height:40px;
+    font-size:20px;
+    color:#fff;
+    font-weight:bold;
+  }
+  .search-tmall-btn input{
+    background-color:#c60000;
+  }
+  .search-top{
+    float:right;
+    margin-left:10px;
+    width:30px;
+    height:30px;
+  }
+  .search-hot{
+    margin-top:10px;
+    width:720px;
+    height:25px;
+    overflow:hidden;
+  }
+  </style>
+</head>
+<body>
+  <div class="search">
+    <div class="search-main">
+      <div class="search-nav" id="search-nav">
+        <a href="#" class="goods">宝贝</a>
+        <a href="#" class="tmall newred">天猫</a>
+        <a href="#" class="shop">店铺</a>
+      </div>
+
+      <div class="search-box" id="search-box">
+        <form>
+          <div class="search-text-panel" id="search-text-panel">
+
+            <div class="search-text" id="search-text" style="display:block">
+              <input type="text" placeholder="这是宝贝搜索输入框"/>
+            </div>
+
+            <div class="search-text search-tmall-text" id="search-text" style="display:none">
+              <input type="text" placeholder="这是天猫搜索输入框"/>
+            </div>
+
+            <div class="search-text" id="search-text" style="display:none">
+              <input type="text" placeholder="这是店铺搜索输入框"/>
+            </div>
+
+          </div>
+          <div class="search-btn-panel" id="search-btn-panel">
+            <div class="search-btn" id="searchBtn" style="display:block">
+              <input type="submit" value="搜索"/>
+            </div>
+
+            <div class="search-btn search-tmall-btn" id="searchBtn" style="display:none">
+              <input type="submit" value="搜索"/>
+            </div>
+
+            <div class="search-btn" id="searchBtn" style="display:none">
+              <input type="submit" value="搜索"/>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="search-top">
+        <a href="#">高级<br/>搜索</a>
+      </div>
+
+    </div>
+
+    <div class="search-hot">
+      <a href="#">吊带</a>
+      <a href="#">鞋子</a>
+      <a href="#">包包</a>
+      <a href="#">好吃哒</a>
+    </div>
+
+  </div>
+</body>
+</html>
